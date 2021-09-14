@@ -1,13 +1,24 @@
 const express = require("express");
+const path = require("path");
+const moment = require("moment");
 const app = express();
-const PORT = 3001;
+const port =
+  process.env.PORT || (process.env.NODE_ENV === "production" && 3000) || 3001;
 
 app.use(express.json());
 
-app.use(express.static("../client/build"));
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+app.get("/api/test", (req, res) => {
+  res.json({ serverTime: moment() });
 });
 
-app.listen(PORT, () => console.log("Server is listening on port: " + PORT));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("../client/build"));
+
+  app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "client", "build", "index.html"));
+  });
+}
+
+app.listen(port, () => {
+  console.log(`Server listening on ${port}`);
+});
