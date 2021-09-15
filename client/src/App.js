@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import "./App.css";
+import Layout from "./components/Layout.js";
+import { getAuthCode } from "./spotify";
+import axios from "axios";
 
 function App() {
+  const [code, setCode] = useState(null);
+  const [accessToken, setAccessToken] = useState(null);
+  const [refreshToken, setRefreshToken] = useState(null);
+  const [expiresIn, setExpiresIn] = useState(null);
+
+  useEffect(() => {
+    const _code = getAuthCode();
+    if (_code) {
+      setCode(_code);
+      axios
+        .post("/spotify/login", {
+          code: _code,
+        })
+        .then((response) => {
+          setAccessToken(response.data.accessToken);
+          setRefreshToken(response.data.refreshToken);
+          setExpiresIn(response.data.expiresIn);
+          console.log(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [code]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Layout code={code} />
     </div>
   );
 }
