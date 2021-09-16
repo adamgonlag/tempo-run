@@ -1,12 +1,13 @@
 import React from "react";
-import LoginButton from "./LoginButton";
-import LogoutButton from "./LogoutButton";
+import AuthButton from "./AuthButton";
+
+import styles from "../styles/Navbar.module.scss";
 
 export default function Navbar({ code }) {
   return (
-    <nav>
-      <div>Tempo Playlist</div>
-      {code ? <LogoutButton /> : <LoginButton />}
+    <nav className={styles.navbar}>
+      <h1 className={styles.logo}>Tempo Playlist</h1>
+      <AuthButton code={code} />
     </nav>
   );
 }

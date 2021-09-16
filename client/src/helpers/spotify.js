@@ -19,6 +19,8 @@ export const AUTH_URL = `${spotify_auth_url}?client_id=${client_id}&response_typ
 // When Spotify API responds to auth request, get auth code from the url
 export const getAuthCode = () => {
   const code = new URLSearchParams(window.location.search).get("code");
-  window.history.pushState({}, null, "/");
+  if (code) {
+    window.history.pushState({}, null, "/");
+  }
   return code;
 };

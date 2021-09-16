@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import "./App.css";
-import Layout from "./components/Layout.js";
-import { getAuthCode } from "./spotify";
+import "../styles/App.module.scss";
+import Layout from "./Layout.js";
+import { getAuthCode } from "../helpers/spotify";
 import axios from "axios";
-const SpotifyWebApi = require("spotify-web-api-js");
+import SpotifyWebApi from "spotify-web-api-js";
 const spotifyApi = new SpotifyWebApi();
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
   const [refreshToken, setRefreshToken] = useState(null);
   const [expiresIn, setExpiresIn] = useState(null);
   const [user, setUser] = useState(null);
+  const [currentPlayingTrack, setCurrentPlayingTrack] = useState(null);
 
   useEffect(() => {
     const _code = getAuthCode();
@@ -28,7 +29,6 @@ function App() {
 
           spotifyApi.setAccessToken(response.data.accessToken);
           spotifyApi.getMe().then((user) => {
-            console.log(user);
             setUser(user);
           });
         })
@@ -36,13 +36,13 @@ function App() {
           console.log(err);
         });
     }
-  }, [code]);
+  }, []);
 
   const getCurrentTrack = () => {
     spotifyApi
       .getMyCurrentPlayingTrack()
       .then((track) => {
-        console.log(track);
+        setCurrentPlayingTrack(track);
       })
       .catch((err) => console.log(err));
   };
@@ -50,9 +50,6 @@ function App() {
   return (
     <div className="App">
       <Layout code={code} />
-      <button onClick={getCurrentTrack}>Get current track</button>
-      <button onClick={() => spotifyApi.pause()}>Pause</button>
-      <button onClick={() => spotifyApi.play()}>Play</button>
     </div>
   );
 }

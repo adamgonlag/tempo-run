@@ -38,6 +38,30 @@ app.post("/spotify/login", (req, res) => {
     });
 });
 
+app.post("/spotify/refresh", (req, res) => {
+  console.log("refreshing token");
+  const refreshToken = req.body.refreshToken;
+  const spotifyApi = new SpotifyWebApi({
+    redirectUri: process.env.REDIRECT_URI,
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    refreshToken,
+  });
+
+  spotifyApi
+    .refreshAccessToken()
+    .then((data) => {
+      res.json({
+        accessToken: data.body.accessToken,
+        expiresIn: data.body.expiresIn,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(400);
+    });
+});
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("../client/build"));
 

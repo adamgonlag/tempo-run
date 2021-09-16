@@ -1,0 +1,17 @@
+.button {
+  button {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-weight: bold;
+  }
+
+  .login {
+    background-color: greenyellow;
+  }
+
+  .logout {
+    background-color: grey;
+    color: greenyellow;
+  }
+}
