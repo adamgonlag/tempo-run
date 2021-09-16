@@ -70,9 +70,9 @@ select {
 }
 
 .react-autosuggest__input {
-  width: 240px;
-  height: 30px;
-  padding: 10px 20px;
+  width: 90%;
+  height: 50px;
+  padding: 10px 15px;
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   font-size: 16px;
@@ -102,7 +102,7 @@ select {
   display: block;
   position: absolute;
   top: 30px;
-  width: 280px;
+  width: 90%;
   border: 1px solid #aaa;
   background-color: #fff;
   font-family: "Open Sans", sans-serif;
@@ -126,5 +126,5 @@ select {
 }
 
 .react-autosuggest__suggestion--highlighted {
-  background-color: #ddd;
+  background-color: rgb(236, 174, 255);
 }

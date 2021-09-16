@@ -1,8 +1,7 @@
 import { useState } from "react";
 import Autosuggest from "react-autosuggest";
-import axios from "axios";
 
-export default function SearchBar({ spotifyApi }) {
+export default function SearchBar({ spotifyApi, setSeedList }) {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
@@ -36,7 +35,9 @@ export default function SearchBar({ spotifyApi }) {
     if (method === "enter") {
       event.preventDefault();
     }
-    setQuery(suggestion.name);
+    console.log(suggestion);
+    setQuery("");
+    setSeedList((state) => [...state, suggestion]);
   };
 
   // Autosuggest will call this function every time you need to clear suggestions.
@@ -45,8 +46,8 @@ export default function SearchBar({ spotifyApi }) {
   };
 
   const inputProps = {
-    placeholder: "Search",
-    autoComplete: "abcd",
+    placeholder: "Search for Artists",
+    autoComplete: "off",
     value: query,
     name: "query",
     onChange: updateQuery,
