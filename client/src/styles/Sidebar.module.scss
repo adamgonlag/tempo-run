@@ -1,0 +1,23 @@
+.sidebar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: left;
+  background-color: rgb(42, 42, 42);
+  padding: 20px 20px;
+  color: white;
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .options {
+    border: 1px solid white;
+  }
+
+  .search {
+    border: 1px solid white;
+  }
+}

@@ -1,20 +1,24 @@
 import Navbar from "./Navbar";
+import Content from "./Content";
+import Sidebar from "./Sidebar";
 import styles from "../styles/Layout.module.scss";
 
-export default function Layout({ code }) {
+export default function Layout({ code, spotifyApi }) {
   return (
     <>
       <header>
         <Navbar code={code} />
       </header>
+
       <main className={styles.main}>
         <section className={styles.sidebar}>
-          <h1>Sidebar</h1>
+          <Sidebar spotifyApi={spotifyApi} />
         </section>
-        <section className={styles.playlist}>
-          <h1>Playlist</h1>
+        <section className={styles.content}>
+          <Content />
         </section>
       </main>
+
       <footer>
         <p>Footer</p>
       </footer>

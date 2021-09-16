@@ -4,7 +4,7 @@ import Layout from "./Layout.js";
 import { getAuthCode } from "../helpers/spotify";
 import axios from "axios";
 import SpotifyWebApi from "spotify-web-api-js";
-const spotifyApi = new SpotifyWebApi();
+const spotify = new SpotifyWebApi();
 
 function App() {
   const [code, setCode] = useState(null);
@@ -13,6 +13,7 @@ function App() {
   const [expiresIn, setExpiresIn] = useState(null);
   const [user, setUser] = useState(null);
   const [currentPlayingTrack, setCurrentPlayingTrack] = useState(null);
+  const [spotifyApi, setSpotifyApi] = useState(spotify);
 
   useEffect(() => {
     const _code = getAuthCode();
@@ -36,7 +37,7 @@ function App() {
           console.log(err);
         });
     }
-  }, []);
+  }, [spotifyApi]);
 
   const getCurrentTrack = () => {
     spotifyApi
@@ -49,7 +50,7 @@ function App() {
 
   return (
     <div className="App">
-      <Layout code={code} />
+      <Layout code={code} spotifyApi={spotify} />
     </div>
   );
 }
