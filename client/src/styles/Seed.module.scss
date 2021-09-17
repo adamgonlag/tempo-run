@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
+  min-height: 52px;
   width: 90%;
   border-radius: 5px;
   background-color: #7a0f6d;
@@ -41,10 +41,10 @@
     }
   }
 
-  b {
-    font-size: 16px;
+  p {
+    font-size: 15px;
     flex-grow: 1;
-    padding-left: 20px;
+    padding-left: 15px;
   }
 
   .remove {

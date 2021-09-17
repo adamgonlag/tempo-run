@@ -1,5 +1,15 @@
 .option {
-  h2 {
-    font-size: 16px;
+  .heading {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  label {
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  h1 {
+    font-size: 18px;
   }
 }

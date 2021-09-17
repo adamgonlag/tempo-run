@@ -17,7 +17,7 @@ export default function Seed({ artist, seedList, setSeedList }) {
           }}
         ></div>
       </div>
-      <b>{artist.name}</b>
+      <p>{artist.name}</p>
       <div className={styles.remove}>
         <span onClick={removeSeed} className="material-icons">
           close

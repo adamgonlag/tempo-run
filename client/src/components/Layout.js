@@ -18,10 +18,6 @@ export default function Layout({ code, spotifyApi }) {
           <Content />
         </section>
       </main>
-
-      <footer>
-        <p>Footer</p>
-      </footer>
     </>
   );
 }

@@ -1,12 +1,12 @@
 .main {
-  height: 100vh;
+  height: calc(100vh - 130px);
   display: flex;
 }
 
 .sidebar {
-  width: 600px;
+  width: 500px;
 }
 
 .content {
-  width: 100%;
+  flex-grow: 1;
 }

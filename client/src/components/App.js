@@ -12,7 +12,7 @@ const spotify = new SpotifyWebApi();
 const theme = createTheme({
   palette: {
     secondary: {
-      main: "#313ca0",
+      main: "#FF3CFF",
     },
   },
 });

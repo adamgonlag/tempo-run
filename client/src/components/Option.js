@@ -12,12 +12,16 @@ export default function Option({ title, valueDisplayed, value, onChange }) {
     min = 80;
   } else if (title === "Duration") {
     valueDisplayed += "hh:mm";
+  } else if (title === "Energy") {
+    valueDisplayed += "%";
   }
 
   return (
     <div className={styles.option}>
-      <h2>{title}</h2>
-      <h1>{valueDisplayed}</h1>
+      <div className={styles.heading}>
+        <label>{title}</label>
+        <h1>{valueDisplayed}</h1>
+      </div>
       <Box>
         <Slider
           aria-label={title}

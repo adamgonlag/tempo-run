@@ -1,0 +1,38 @@
+.item {
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    background-color: rgb(121, 100, 129);
+  }
+
+  th,
+  td {
+    padding: 18px 15px 12px 0;
+  }
+
+  .artist {
+    display: flex;
+    height: 80px;
+
+    .artistImg {
+      object-fit: cover;
+      margin-right: 20px;
+    }
+
+    h1 {
+      font-size: 18px;
+    }
+  }
+
+  .id,
+  .tempo,
+  .length,
+  .energy {
+    padding: 0 25px;
+    text-align: center;
+  }
+
+  span {
+    cursor: pointer;
+  }
+}

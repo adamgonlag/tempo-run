@@ -1,8 +1,14 @@
 .navbar {
-  background-color: rgb(162, 162, 255);
+  background-color: rgb(42, 42, 42);
+  color: rgb(255, 60, 255);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 50px;
-  min-height: 90px;
+  padding: 20px 40px;
+  min-height: 130px;
+
+  .logo {
+    font-size: 60px;
+    padding: 0;
+  }
 }
