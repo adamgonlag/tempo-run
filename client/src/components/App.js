@@ -30,34 +30,20 @@ function App() {
     const _code = getAuthCode();
     if (_code) {
       setCode(_code);
-      axios
-        .post("/spotify/login", {
+      (async () => {
+        const response = await axios.post("/spotify/login", {
           code: _code,
-        })
-        .then((response) => {
-          setAccessToken(response.data.accessToken);
-          setRefreshToken(response.data.refreshToken);
-          setExpiresIn(response.data.expiresIn);
-
-          spotifyApi.setAccessToken(response.data.accessToken);
-          spotifyApi.getMe().then((user) => {
-            setUser(user);
-          });
-        })
-        .catch((err) => {
-          console.log(err);
         });
+        setAccessToken(response.data.accessToken);
+        setRefreshToken(response.data.refreshToken);
+        setExpiresIn(response.data.expiresIn);
+        spotifyApi.setAccessToken(response.data.accessToken);
+
+        const userData = await spotifyApi.getMe();
+        setUser(userData);
+      })();
     }
   }, [spotifyApi]);
-
-  const getCurrentTrack = () => {
-    spotifyApi
-      .getMyCurrentPlayingTrack()
-      .then((track) => {
-        setCurrentPlayingTrack(track);
-      })
-      .catch((err) => console.log(err));
-  };
 
   return (
     <ThemeProvider theme={theme}>

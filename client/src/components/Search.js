@@ -13,7 +13,14 @@ export default function Search({ spotifyApi }) {
       <div className={styles.seeds}>
         {seedList.length > 0
           ? seedList.map((artist) => {
-              return <Seed key={artist} artist={artist} />;
+              return (
+                <Seed
+                  key={artist.id}
+                  artist={artist}
+                  seedList={seedList}
+                  setSeedList={setSeedList}
+                />
+              );
             })
           : null}
       </div>
