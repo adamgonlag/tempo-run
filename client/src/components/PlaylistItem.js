@@ -3,10 +3,20 @@ import React from "react";
 import styles from "../styles/PlaylistItem.module.scss";
 import { convertMillisecondsToString } from "../helpers/playlistCalculations";
 
-export default function PlaylistItem({ track, i, playlist, setPlaylist }) {
-  const handleRemove = (e) => {
+export default function PlaylistItem({
+  track,
+  i,
+  playlist,
+  setPlaylist,
+  spotifyApi,
+}) {
+  const handleRemove = () => {
     const newPlaylist = playlist.filter((_track) => _track.id !== track.id);
     setPlaylist(newPlaylist);
+  };
+
+  const handlePlay = () => {
+    spotifyApi.play();
   };
 
   return (
@@ -33,7 +43,9 @@ export default function PlaylistItem({ track, i, playlist, setPlaylist }) {
         {"%"}
       </td>
       <td>
-        <span className="material-icons">play_arrow</span>
+        <span onClick={handlePlay} className="material-icons">
+          play_arrow
+        </span>
       </td>
       <td>
         <span onClick={handleRemove} className="material-icons">

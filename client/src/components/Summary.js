@@ -94,12 +94,12 @@ export default function Summary({
               value={tempo}
               onChange={changeTempo}
             />
-            {/* <Option
+            <Option
               title="Duration"
               valueDisplayed={durationString}
               value={duration}
               onChange={changeDuration}
-            /> */}
+            />
             <Option
               title="Energy"
               valueDisplayed={energy}
@@ -123,7 +123,7 @@ export default function Summary({
             </div>
           </div>
           <div className={styles.playlistDuration}>
-            <label htmlFor="">Total Length (hh:mm)</label>
+            <label htmlFor="">Total Length</label>
             <h1>{playlistDuration(playlist)}</h1>
           </div>
         </div>

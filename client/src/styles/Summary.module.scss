@@ -11,18 +11,23 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  // gap: 10px;
+  gap: 10px;
+
+  label {
+    font-size: 18px;
+    font-weight: bold;
+  }
 }
 
 .details {
   width: 100%;
-  padding: 10px;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 20px;
+  gap: 10px;
   // box-shadow: 2px 2px 5px rgb(242, 255, 60);
-  label {
-    font-size: 12px;
-    font-weight: bold;
-  }
 
   .playlistName,
   .playlistDescription {
@@ -38,12 +43,14 @@
   }
 
   .playlistName {
+    flex-grow: 1;
+    align-self: flex-start;
     display: flex;
     flex-direction: column;
-    align-self: flex-start;
+    align-self: flex-end;
     gap: 0px;
     width: 100%;
-    margin-bottom: 15px;
+    overflow: hidden;
 
     p {
       font-size: 14px;
@@ -58,6 +65,8 @@
 
     button {
       cursor: pointer;
+      width: 100%;
+      height: 60px;
       border-radius: 5px;
       padding: 5px 15px;
       font-weight: bold;
@@ -65,7 +74,7 @@
       transition: all 0.15s ease-in-out;
 
       &:hover {
-        transform: scale(1.05);
+        transform: scale(1.01);
       }
     }
   }
@@ -74,7 +83,6 @@
 .options {
   width: 100%;
 
-  padding: 10px;
   // background-color: rgb(69, 54, 70);
   // box-shadow: 2px 2px 5px rgb(242, 255, 60);
 

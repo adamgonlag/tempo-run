@@ -84,11 +84,15 @@ export default function Layout({ code, spotifyApi, user }) {
             spotifyApi={spotifyApi}
           />
         </section>
-        <section className={styles.player}>
+        {/* <section className={styles.player}>
           <Player options={options} />
-        </section>
+        </section> */}
         <section className={styles.playlist}>
-          <Playlist playlist={playlist} setPlaylist={setPlaylist} />
+          <Playlist
+            spotifyApi={spotifyApi}
+            playlist={playlist}
+            setPlaylist={setPlaylist}
+          />
         </section>
         <section className={styles.summary}>
           <Summary

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PlaylistItem from "./PlaylistItem";
 import styles from "../styles/Playlist.module.scss";
 
-export default function Playlist({ playlist, setPlaylist }) {
+export default function Playlist({ playlist, setPlaylist, spotifyApi }) {
   return (
     <div className={styles.playlist}>
       <table className={styles.table}>
@@ -31,6 +31,7 @@ export default function Playlist({ playlist, setPlaylist }) {
                 playlist={playlist}
                 setPlaylist={setPlaylist}
                 track={track}
+                spotifyApi={spotifyApi}
               />
             );
           })}
