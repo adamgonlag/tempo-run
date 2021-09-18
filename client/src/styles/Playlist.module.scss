@@ -2,18 +2,40 @@
   .table {
     border-collapse: collapse;
     width: 100%;
-    margin: 0;
     font-size: 0.9em;
     border-radius: 5px;
     font-family: sans-serif;
     min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     table-layout: fixed;
     overflow-y: auto;
 
+    table {
+      border-collapse: separate;
+    }
+
+    tbody:before {
+      content: "@";
+      display: block;
+      line-height: 10px;
+      text-indent: -99999px;
+    }
+
+    tr td:first-child {
+      border-top-left-radius: 5px;
+    }
+    tr td:last-child {
+      border-top-right-radius: 5px;
+    }
+    tr td:first-child {
+      border-bottom-left-radius: 5px;
+    }
+    tr td:last-child {
+      border-bottom-right-radius: 5px;
+    }
+
     th {
-      padding: 15px 0;
-      width: 70px;
+      padding: 10px 0;
+      width: 40px;
     }
 
     thead tr {

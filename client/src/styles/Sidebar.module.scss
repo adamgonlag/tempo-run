@@ -1,11 +1,11 @@
 .sidebar {
-  height: 100%;
+  // height: calc(100vh - 130px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: left;
-  background-color: rgb(42, 42, 42);
-  padding: 25px 10px 25px 50px;
+  background-color: rgb(36, 36, 36);
+  padding: 25px 0 25px 50px;
   color: white;
 
   ul {

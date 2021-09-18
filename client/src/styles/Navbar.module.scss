@@ -1,14 +1,26 @@
 .navbar {
-  background-color: rgb(42, 42, 42);
+  background-color: rgb(36, 36, 36);
   color: rgb(255, 60, 255);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
+  align-items: end;
+  padding: 20px 75px;
   min-height: 130px;
 
   .logo {
     font-size: 60px;
     padding: 0;
+    text-decoration: underline;
+  }
+
+  .navItems {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 12px;
+
+    p {
+      font-size: 20px;
+    }
   }
 }

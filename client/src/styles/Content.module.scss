@@ -1,20 +1,22 @@
 .content {
-  height: 100%;
+  height: calc(100vh - 130px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  background-color: rgb(42, 42, 42);
-  padding: 25px 50px;
+  background-color: rgb(36, 36, 36);
+
+  padding: 25px 50px 25px 0;
   color: white;
+  gap: 40px;
 
   .summary {
     width: 100%;
-    padding: 20px 25px;
+    height: 100px;
+    padding: 25px 50px;
     background-color: rgb(69, 54, 70);
     box-shadow: 2px 2px 5px rgb(255, 60, 255);
     border-radius: 5px;
-    margin-bottom: 40px;
     transition: all 0.1s ease-in-out;
 
     display: flex;
@@ -32,22 +34,9 @@
     }
 
     .playlistName {
-    }
-
-    .playlistDescription {
-    }
-
-    .playlistTracks {
-    }
-    .playlistDuration {
-    }
-
-    .playlistOptions {
       display: flex;
-      justify-content: flex-start;
-      gap: 10px;
-      grid-area: options;
-      align-self: end;
+      flex-direction: column;
+      justify-content: flex-end;
     }
 
     .playlistSave {
@@ -61,7 +50,7 @@
         border-radius: 5px;
         padding: 5px 15px;
         font-weight: bold;
-        background-color: greenyellow;
+        background-color: rgb(255, 60, 255);
       }
     }
 
@@ -72,17 +61,32 @@
 
   .playlist {
     width: 100%;
-    height: 80%;
-    padding: 25px 30px;
+    height: calc(100% - 100px);
+    padding: 10px 25px;
     background-color: rgb(69, 54, 70);
     box-shadow: 2px 2px 5px rgb(255, 60, 255);
     border-radius: 5px;
-    -ms-overflow-style: none; /* for Internet Explorer, Edge */
-    scrollbar-width: none; /* for Firefox */
+
+    // -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    // scrollbar-width: none; /* for Firefox */
     overflow-y: scroll;
 
     &::-webkit-scrollbar {
-      display: none; /* for Chrome, Safari, and Opera */
+      /* for Chrome, Safari, and Opera */
+      width: 12px;
+
+      background: rgb(69, 54, 70);
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      // border: none;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: rgb(121, 100, 129);
+      border-radius: 3px;
     }
   }
 }

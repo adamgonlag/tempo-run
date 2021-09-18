@@ -42,7 +42,7 @@ export default function SearchBar({ spotifyApi, setSeedList }) {
   };
 
   const inputProps = {
-    placeholder: "Search for Artists",
+    placeholder: "Search for artists to generate playlist",
     autoComplete: "off",
     value: query,
     name: "query",

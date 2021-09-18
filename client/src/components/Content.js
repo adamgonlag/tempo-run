@@ -26,15 +26,13 @@ export default function Content() {
             34:21 <span>hh:mm</span>
           </h1>
         </div>
-        <div className={styles.playlistOptions}>
-          <div>
-            <label>Public</label>
-            <Switch {...label} defaultChecked color="secondary" />
-          </div>
-          <div>
-            <label>Collaborative</label>
-            <Switch {...label} defaultChecked color="secondary" />
-          </div>
+        <div className={styles.playlistPublic}>
+          <label>Public</label>
+          <Switch {...label} defaultChecked color="secondary" />
+        </div>
+        <div className={styles.playlistCollab}>
+          <label>Collaborative</label>
+          <Switch {...label} defaultChecked color="secondary" />
         </div>
         <div className={styles.playlistSave}>
           <button>Save to Spotify</button>

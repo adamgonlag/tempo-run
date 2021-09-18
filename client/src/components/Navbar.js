@@ -7,7 +7,10 @@ export default function Navbar({ code }) {
   return (
     <nav className={styles.navbar}>
       <h1 className={styles.logo}>Tempo Playlist</h1>
-      <AuthButton code={code} />
+      <div className={styles.navItems}>
+        <p>Hey Adam!</p>
+        <AuthButton code={code} />
+      </div>
     </nav>
   );
 }
