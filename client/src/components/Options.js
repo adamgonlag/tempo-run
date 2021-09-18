@@ -2,10 +2,8 @@ import { useState } from "react";
 import styles from "../styles/Options.module.scss";
 import Option from "./Option";
 
-export default function Options() {
-  const [tempo, setTempo] = useState(110);
-  const [duration, setDuration] = useState(50);
-  const [energy, setEnergy] = useState(75);
+export default function Options({ options }) {
+  const [tempo, setTempo, energy, setEnergy, duration, setDuration] = options;
 
   const changeTempo = (event, newValue) => {
     setTempo(newValue);
@@ -45,12 +43,12 @@ export default function Options() {
               value={tempo}
               onChange={changeTempo}
             />
-            <Option
+            {/* <Option
               title="Duration"
               valueDisplayed={durationString}
               value={duration}
               onChange={changeDuration}
-            />
+            /> */}
             <Option
               title="Energy"
               valueDisplayed={energy}

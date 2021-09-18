@@ -7,7 +7,6 @@
     font-family: sans-serif;
     min-width: 400px;
     table-layout: fixed;
-    overflow-y: auto;
 
     table {
       border-collapse: separate;
@@ -34,8 +33,11 @@
     }
 
     th {
-      padding: 10px 0;
+      padding: 20px 0;
       width: 40px;
+      position: sticky;
+      top: 0; /* Don't forget this, required for the stickiness */
+      background-color: rgb(69, 54, 70);
     }
 
     thead tr {
@@ -51,9 +53,12 @@
       text-align: center;
     }
 
-    .track,
-    .album {
+    .track {
       width: 300px;
+    }
+
+    .album {
+      width: 200px;
     }
   }
 }

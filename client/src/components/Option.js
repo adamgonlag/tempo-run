@@ -13,7 +13,9 @@ export default function Option({ title, valueDisplayed, value, onChange }) {
   } else if (title === "Duration") {
     valueDisplayed += "hh:mm";
   } else if (title === "Energy") {
-    valueDisplayed += "%";
+    max = 100;
+    min = 0;
+    valueDisplayed = valueDisplayed + "%";
   }
 
   return (

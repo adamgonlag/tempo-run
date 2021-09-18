@@ -48,7 +48,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Layout code={code} spotifyApi={spotify} />
+        <Layout user={user} code={code} spotifyApi={spotify} />
       </div>
     </ThemeProvider>
   );

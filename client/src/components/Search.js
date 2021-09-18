@@ -3,9 +3,7 @@ import SearchBar from "./SearchBar";
 import styles from "../styles/Search.module.scss";
 import Seed from "./Seed";
 
-export default function Search({ spotifyApi }) {
-  const [seedList, setSeedList] = useState([]);
-
+export default function Search({ spotifyApi, seedList, setSeedList }) {
   return (
     <div className={styles.search}>
       <SearchBar setSeedList={setSeedList} spotifyApi={spotifyApi} />
