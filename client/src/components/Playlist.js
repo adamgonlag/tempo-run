@@ -4,7 +4,7 @@ import styles from "../styles/Playlist.module.scss";
 
 export default function Playlist({ playlist, setPlaylist }) {
   return (
-    <section className={styles.playlist}>
+    <div className={styles.playlist}>
       <table className={styles.table}>
         <thead>
           <tr>
@@ -36,6 +36,6 @@ export default function Playlist({ playlist, setPlaylist }) {
           })}
         </tbody>
       </table>
-    </section>
+    </div>
   );
 }

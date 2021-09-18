@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
-import Content from "./Content";
-import Sidebar from "./Sidebar";
+import Summary from "./Summary";
+import Player from "./Player";
+import Search from "./Search";
 import styles from "../styles/Layout.module.scss";
+import Playlist from "./Playlist";
 
 export default function Layout({ code, spotifyApi, user }) {
   const [seedList, setSeedList] = useState([]);
@@ -11,6 +13,8 @@ export default function Layout({ code, spotifyApi, user }) {
   const [duration, setDuration] = useState(17);
   const [energy, setEnergy] = useState(80);
   const [playlistName, setPlaylistName] = useState("110bpm playlist");
+  const [publicPlaylist, setPublicPlaylist] = useState(true);
+  const [collaborativePlaylist, setcollaborativePlaylist] = useState(false);
 
   const options = [tempo, setTempo, energy, setEnergy, duration, setDuration];
 
@@ -73,22 +77,31 @@ export default function Layout({ code, spotifyApi, user }) {
       </header>
 
       <main className={styles.main}>
-        <section className={styles.sidebar}>
-          <Sidebar
-            options={options}
+        <section className={styles.search}>
+          <Search
             seedList={seedList}
             setSeedList={setSeedList}
             spotifyApi={spotifyApi}
           />
         </section>
-        <section className={styles.content}>
-          <Content
-            playlistName={playlistName}
-            setPlaylistName={setPlaylistName}
-            user={user}
-            spotifyApi={spotifyApi}
+        <section className={styles.player}>
+          <Player options={options} />
+        </section>
+        <section className={styles.playlist}>
+          <Playlist playlist={playlist} setPlaylist={setPlaylist} />
+        </section>
+        <section className={styles.summary}>
+          <Summary
             playlist={playlist}
-            setPlaylist={setPlaylist}
+            playlistName={playlistName}
+            options={options}
+            seedList={seedList}
+            setSeedList={setSeedList}
+            spotifyApi={spotifyApi}
+            publicPlaylist={publicPlaylist}
+            setPublicPlaylist={setPublicPlaylist}
+            collaborativePlaylist={collaborativePlaylist}
+            setcollaborativePlaylist={setcollaborativePlaylist}
           />
         </section>
       </main>

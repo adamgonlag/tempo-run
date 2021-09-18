@@ -1,4 +1,6 @@
 import { useState } from "react";
+import styles from "../styles/Search.module.scss";
+
 import Autosuggest from "react-autosuggest";
 
 export default function SearchBar({ spotifyApi, setSeedList }) {
@@ -42,7 +44,7 @@ export default function SearchBar({ spotifyApi, setSeedList }) {
   };
 
   const inputProps = {
-    placeholder: "Search for artists to generate playlist",
+    placeholder: "Search for artists to generate a playlist of similar music",
     autoComplete: "off",
     value: query,
     name: "query",
@@ -50,14 +52,20 @@ export default function SearchBar({ spotifyApi, setSeedList }) {
   };
 
   return (
-    <Autosuggest
-      suggestions={suggestions}
-      onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-      onSuggestionsClearRequested={onSuggestionsClearRequested}
-      getSuggestionValue={getSuggestionValue}
-      renderSuggestion={renderSuggestion}
-      onSuggestionSelected={onSuggestionSelected}
-      inputProps={inputProps}
-    />
+    <>
+      <div className={styles.searchBar}>
+        <span className="material-icons">search</span>
+
+        <Autosuggest
+          suggestions={suggestions}
+          onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+          onSuggestionsClearRequested={onSuggestionsClearRequested}
+          getSuggestionValue={getSuggestionValue}
+          renderSuggestion={renderSuggestion}
+          onSuggestionSelected={onSuggestionSelected}
+          inputProps={inputProps}
+        />
+      </div>
+    </>
   );
 }

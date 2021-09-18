@@ -1,14 +1,63 @@
 .search {
   padding: 25px;
+  width: 100%;
   background-color: rgb(69, 54, 70);
-  flex-grow: 1;
-
   box-shadow: 2px 2px 5px rgb(255, 60, 255);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease-in-out;
+
+  .searchBar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+
+    input {
+      &:required,
+      &:invalid {
+        box-shadow: none;
+      }
+      font-size: 22px;
+      color: white;
+      resize: none;
+      background-color: transparent;
+      border: none;
+      outline: 0;
+      margin-left: 15px;
+      background: transparent;
+      border-bottom: 1px solid rgb(69, 54, 70);
+      transition: border-color 0.2s;
+      transition: opacity 0.2s;
+
+      &:focus {
+        border-bottom: 1px solid rgb(255, 60, 255);
+        transition: border-color 0.2s;
+        transition: opacity 0.2s;
+
+        &::placeholder {
+          transition: opacity 0.2s;
+          opacity: 0;
+        }
+      }
+
+      &::placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: white;
+        opacity: 1; /* Firefox */
+      }
+
+      &:hover {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        border-bottom: 1px solid rgb(255, 60, 255);
+      }
+    }
+  }
 }
 
 .seeds {
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
-  margin-top: 20px;
 }
