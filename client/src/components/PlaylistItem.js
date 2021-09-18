@@ -3,7 +3,12 @@ import React from "react";
 import styles from "../styles/PlaylistItem.module.scss";
 import { convertMillisecondsToString } from "../helpers/playlistCalculations";
 
-export default function PlaylistItem({ track, i }) {
+export default function PlaylistItem({ track, i, playlist, setPlaylist }) {
+  const handleRemove = (e) => {
+    const newPlaylist = playlist.filter((_track) => _track.id !== track.id);
+    setPlaylist(newPlaylist);
+  };
+
   return (
     <tr className={styles.item}>
       <td className={styles.id}>{i}</td>
@@ -31,7 +36,9 @@ export default function PlaylistItem({ track, i }) {
         <span className="material-icons">play_arrow</span>
       </td>
       <td>
-        <span className="material-icons">close</span>
+        <span onClick={handleRemove} className="material-icons">
+          close
+        </span>
       </td>
     </tr>
   );

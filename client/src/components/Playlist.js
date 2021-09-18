@@ -24,7 +24,15 @@ export default function Playlist({ playlist, setPlaylist }) {
         </thead>
         <tbody>
           {playlist.map((track, i) => {
-            return <PlaylistItem i={i + 1} key={track.id} track={track} />;
+            return (
+              <PlaylistItem
+                i={i + 1}
+                key={track.id}
+                playlist={playlist}
+                setPlaylist={setPlaylist}
+                track={track}
+              />
+            );
           })}
         </tbody>
       </table>
