@@ -1,4 +1,4 @@
-import styles from "../styles/Summary.module.scss";
+import styles from "../styles/components/Summary.module.scss";
 import Switch from "@mui/material/Switch";
 import { playlistDuration } from "../helpers/playlistCalculations";
 import Option from "./Option";
@@ -51,7 +51,7 @@ export default function Summary({
     spotifyApi
       .createPlaylist(user.id, {
         name: playlistName,
-        description: "Create by Tempo Playlist",
+        description: "Created by Tempo Playlist",
         public: publicPlaylist,
         collaborative: collaborativePlaylist,
       })

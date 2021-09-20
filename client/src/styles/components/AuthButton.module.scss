@@ -1,0 +1,24 @@
+@import "../base/fonts";
+@import "../base/variables";
+@import "../base/typography";
+
+.button {
+  button {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-weight: bold;
+    border: none;
+    height: 50px;
+  }
+
+  .login {
+    background-color: $pink-flamingo;
+  }
+
+  .logout {
+    background-color: transparent;
+    color: $pink-flamingo;
+    border: 2px solid $pink-flamingo;
+  }
+}

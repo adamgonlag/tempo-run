@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import Summary from "./Summary";
-import Player from "./Player";
 import Search from "./Search";
-import styles from "../styles/Layout.module.scss";
+import styles from "../styles/components/Layout.module.scss";
 import Playlist from "./Playlist";
 
 export default function Layout({ code, spotifyApi, user }) {
@@ -96,6 +95,7 @@ export default function Layout({ code, spotifyApi, user }) {
         </section>
         <section className={styles.summary}>
           <Summary
+            user={user}
             playlist={playlist}
             playlistName={playlistName}
             options={options}

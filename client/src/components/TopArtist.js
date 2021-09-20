@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/TopArtist.module.scss";
+import styles from "../styles/components/TopArtist.module.scss";
 
 export default function TopArtist() {
   const imageUrl =

@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import styles from "../styles/Option.module.scss";
+import styles from "../styles/components/Option.module.scss";
 
 export default function Option({ title, valueDisplayed, value, onChange }) {
   let max = 100,

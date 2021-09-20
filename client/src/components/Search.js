@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SearchBar from "./SearchBar";
-import styles from "../styles/Search.module.scss";
+import styles from "../styles/components/Search.module.scss";
 import Seed from "./Seed";
 
 export default function Search({ spotifyApi, seedList, setSeedList }) {

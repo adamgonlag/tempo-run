@@ -1,6 +1,6 @@
 import { style } from "@mui/system";
 import React from "react";
-import styles from "../styles/PlaylistItem.module.scss";
+import styles from "../styles/components/PlaylistItem.module.scss";
 import { convertMillisecondsToString } from "../helpers/playlistCalculations";
 
 export default function PlaylistItem({
@@ -42,12 +42,7 @@ export default function PlaylistItem({
         {Math.floor(track.audio_features.energy * 100)}
         {"%"}
       </td>
-      <td>
-        <span onClick={handlePlay} className="material-icons">
-          play_arrow
-        </span>
-      </td>
-      <td>
+      <td className={styles.remove}>
         <span onClick={handleRemove} className="material-icons">
           close
         </span>

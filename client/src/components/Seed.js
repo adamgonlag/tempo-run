@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/Seed.module.scss";
+import styles from "../styles/components/Seed.module.scss";
 
 export default function Seed({ artist, seedList, setSeedList }) {
   const removeSeed = () => {

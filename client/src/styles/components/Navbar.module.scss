@@ -1,0 +1,58 @@
+@import "../base/fonts";
+@import "../base/variables";
+@import "../base/typography";
+
+.navbar {
+  color: $pink-flamingo;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding: 20px 75px;
+  height: 130px;
+
+  .logo {
+    font-size: 60px;
+    padding: 0;
+    text-decoration: underline;
+  }
+
+  .navItems {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 20px;
+
+    p {
+      font-size: 20px;
+      padding-right: 20px;
+    }
+
+    .user {
+      height: 50px;
+      padding: 3px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 50px;
+      color: white;
+      background-color: $card-dark-grey;
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 45px;
+        border-radius: 50px;
+      }
+    }
+    .spotify {
+      object-fit: cover;
+      height: 100%;
+      width: 54px;
+      border-radius: 50px;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}

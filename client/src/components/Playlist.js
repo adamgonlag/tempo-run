@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PlaylistItem from "./PlaylistItem";
-import styles from "../styles/Playlist.module.scss";
+import styles from "../styles/components/Playlist.module.scss";
 
 export default function Playlist({ playlist, setPlaylist, spotifyApi }) {
   return (
@@ -18,7 +18,6 @@ export default function Playlist({ playlist, setPlaylist, spotifyApi }) {
             <th className={styles.energy}>
               <span className="material-icons">bolt</span>
             </th>
-            <th></th>
             <th></th>
           </tr>
         </thead>

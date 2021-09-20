@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
-import "../styles/App.module.scss";
+
+import axios from "axios";
+import SpotifyWebApi from "spotify-web-api-js";
+
+import "../styles/index.scss";
+import "../styles/components/App.module.scss";
+
 import Layout from "./Layout.js";
 import { getAuthCode } from "../helpers/spotify";
-import axios from "axios";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import SpotifyWebApi from "spotify-web-api-js";
 
 const spotify = new SpotifyWebApi();
 
@@ -12,7 +16,7 @@ const spotify = new SpotifyWebApi();
 const theme = createTheme({
   palette: {
     secondary: {
-      main: "#FF3CFF",
+      main: "rgb(255, 60, 255)",
     },
   },
 });

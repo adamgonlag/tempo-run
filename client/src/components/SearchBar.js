@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "../styles/Search.module.scss";
+import styles from "../styles/components/Search.module.scss";
 
 import Autosuggest from "react-autosuggest";
 

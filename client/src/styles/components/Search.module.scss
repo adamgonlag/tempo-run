@@ -1,9 +1,14 @@
+@import "../base/fonts";
+@import "../base/variables";
+@import "../base/typography";
+
 .search {
   padding: 25px;
   padding-top: 22px;
   width: 100%;
-  background-color: rgb(69, 54, 70);
-  box-shadow: 2px 2px 5px rgb(255, 60, 255);
+  background-color: $card-dark-grey;
+  border-radius: 5px;
+
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease-in-out;
@@ -27,12 +32,12 @@
       outline: 0;
       margin-left: 15px;
       background: transparent;
-      border-bottom: 1px solid rgb(69, 54, 70);
+      border-bottom: 1px solid $purple;
       transition: border-color 0.2s;
       transition: opacity 0.2s;
 
       &:focus {
-        border-bottom: 1px solid rgb(255, 60, 255);
+        border-bottom: 1px solid $pink-flamingo;
         transition: border-color 0.2s;
         transition: opacity 0.2s;
 
@@ -44,13 +49,13 @@
 
       &::placeholder {
         /* Chrome, Firefox, Opera, Safari 10.1+ */
-        color: white;
+        color: $grey-text;
         opacity: 1; /* Firefox */
       }
 
       &:hover {
         /* Chrome, Firefox, Opera, Safari 10.1+ */
-        border-bottom: 1px solid rgb(255, 60, 255);
+        border-bottom: 1px solid $pink-flamingo;
       }
     }
   }

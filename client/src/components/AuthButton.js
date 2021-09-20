@@ -1,4 +1,4 @@
-import styles from "../styles/AuthButton.module.scss";
+import styles from "../styles/components/AuthButton.module.scss";
 import { AUTH_URL } from "../helpers/spotify";
 
 export default function AuthButton({ code }) {

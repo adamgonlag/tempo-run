@@ -1,14 +1,12 @@
+@import "../base/fonts";
+@import "../base/variables";
+@import "../base/typography";
+
 .option {
   .heading {
     display: flex;
     justify-content: space-between;
   }
-
-  label {
-    font-size: 18px;
-    font-weight: bold;
-  }
-
   h1 {
     font-size: 26px;
   }
