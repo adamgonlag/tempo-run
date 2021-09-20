@@ -53,13 +53,16 @@ export default function Layout({ code, spotifyApi, user }) {
           // Attach audio features to each track
           const trackIds = newPlaylist.map((track) => track.id);
           spotifyApi.getAudioFeaturesForTracks(trackIds).then((data) => {
-            newPlaylist = newPlaylist.map((track) => {
-              const trackAudioFeatures = data.audio_features.filter(
-                (item) => item.uri === track.uri
+            newPlaylist = newPlaylist
+              .map((track) => {
+                const trackAudioFeatures = data.audio_features.filter(
+                  (item) => item.uri === track.uri
+                );
+                return { ...track, audio_features: trackAudioFeatures[0] };
+              })
+              .filter(
+                (track) => Math.floor(track.audio_features.tempo) === tempo
               );
-              return { ...track, audio_features: trackAudioFeatures[0] };
-            });
-            console.log(newPlaylist);
             setPlaylist(newPlaylist);
           });
         })
