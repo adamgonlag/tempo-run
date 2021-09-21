@@ -15,10 +15,6 @@ export default function PlaylistItem({
     setPlaylist(newPlaylist);
   };
 
-  const handlePlay = () => {
-    spotifyApi.play();
-  };
-
   return (
     <tr className={styles.item}>
       <td className={styles.id}>{i}</td>

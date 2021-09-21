@@ -19,6 +19,7 @@ export default function Layout({ code, spotifyApi, user }) {
   const [collaborativePlaylist, setcollaborativePlaylist] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [pageLoading, setPageLoading] = useState(true);
+  const [loadingPlaylist, setLoadingPlaylist] = useState(false);
 
   const closeModal = () => setModalOpen(false);
 
@@ -38,7 +39,7 @@ export default function Layout({ code, spotifyApi, user }) {
     setPlaylistName(`${tempo}bpm playlist${msg}`);
   }, [tempo, seedList]);
 
-  // Save the playlist
+  // Get playlist recommendations
   useEffect(() => {
     const target_tempo = tempo;
     const min_tempo = target_tempo - 1;
@@ -58,7 +59,10 @@ export default function Layout({ code, spotifyApi, user }) {
       max_tempo,
     };
 
-    if (seedList.length) {
+    if (seedList.length === 0) {
+      setPlaylist([]);
+    } else {
+      setLoadingPlaylist(true);
       spotifyApi
         .getRecommendations(recommendationOptions)
         .then((data) => {
@@ -77,7 +81,12 @@ export default function Layout({ code, spotifyApi, user }) {
               .filter(
                 (track) => Math.floor(track.audio_features.tempo) === tempo
               );
-            setPlaylist(newPlaylist);
+
+            //Allow loader to show longer before showing playlistt
+            setTimeout(() => {
+              setPlaylist(newPlaylist);
+              setLoadingPlaylist(false);
+            }, 250);
           });
         })
         .catch((err) => {
@@ -116,30 +125,37 @@ export default function Layout({ code, spotifyApi, user }) {
                 seedList={seedList}
                 setSeedList={setSeedList}
                 spotifyApi={spotifyApi}
-              />
-            </section>
-            <section className={styles.playlist}>
-              <Playlist
-                spotifyApi={spotifyApi}
+                loadingPlaylist={loadingPlaylist}
+                setLoadingPlaylist={setLoadingPlaylist}
                 playlist={playlist}
-                setPlaylist={setPlaylist}
               />
             </section>
-            <section className={styles.summary}>
-              <Summary
-                user={user}
-                playlist={playlist}
-                playlistName={playlistName}
-                options={options}
-                seedList={seedList}
-                setSeedList={setSeedList}
-                spotifyApi={spotifyApi}
-                publicPlaylist={publicPlaylist}
-                setPublicPlaylist={setPublicPlaylist}
-                collaborativePlaylist={collaborativePlaylist}
-                setcollaborativePlaylist={setcollaborativePlaylist}
-              />
-            </section>
+            {playlist.length > 0 ? (
+              <>
+                <section className={styles.playlist}>
+                  <Playlist
+                    spotifyApi={spotifyApi}
+                    playlist={playlist}
+                    setPlaylist={setPlaylist}
+                  />
+                </section>
+                <section className={styles.summary}>
+                  <Summary
+                    user={user}
+                    playlist={playlist}
+                    playlistName={playlistName}
+                    options={options}
+                    seedList={seedList}
+                    setSeedList={setSeedList}
+                    spotifyApi={spotifyApi}
+                    publicPlaylist={publicPlaylist}
+                    setPublicPlaylist={setPublicPlaylist}
+                    collaborativePlaylist={collaborativePlaylist}
+                    setcollaborativePlaylist={setcollaborativePlaylist}
+                  />
+                </section>
+              </>
+            ) : null}
           </main>
         </>
       ) : (

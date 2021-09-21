@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../styles/components/Seed.module.scss";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Seed({ artist, seedList, setSeedList }) {
   const removeSeed = () => {
@@ -14,8 +15,20 @@ export default function Seed({ artist, seedList, setSeedList }) {
     img_url = artist.images[0].url;
   }
 
+  const seedLoader = {
+    initial: { scale: 0 },
+    animate: { scale: 1, transition: { ease: "easeInOut", duration: 0.02 } },
+    exit: { scale: 0, x: "200px" },
+  };
+
   return (
-    <div className={styles.seed}>
+    <motion.div
+      className={styles.seed}
+      variants={seedLoader}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       <div className={styles.imageContainer}>
         <div
           className={styles.image}
@@ -30,6 +43,6 @@ export default function Seed({ artist, seedList, setSeedList }) {
           close
         </span>{" "}
       </div>
-    </div>
+    </motion.div>
   );
 }
