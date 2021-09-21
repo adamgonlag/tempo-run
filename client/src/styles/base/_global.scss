@@ -4,11 +4,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(26, 26, 26);
   font-family: "Poppins", sans-serif;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  overflow-y: hidden;
 }
 
 /* Box sizing rules */
@@ -16,17 +12,6 @@ code {
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-::-moz-selection {
-  /* Code for Firefox */
-  color: #fdabfd;
-  background: rgb(0, 0, 0);
-}
-
-::selection {
-  color: #fdabfd;
-  background: rgb(0, 0, 0);
 }
 
 /* Remove default margin */
@@ -73,6 +58,17 @@ button,
 textarea,
 select {
   font: inherit;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: #fdabfd;
+  background: rgb(0, 0, 0);
+}
+
+::selection {
+  color: #fdabfd;
+  background: rgb(0, 0, 0);
 }
 
 .react-autosuggest__container {

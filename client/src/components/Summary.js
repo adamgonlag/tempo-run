@@ -2,6 +2,7 @@ import styles from "../styles/components/Summary.module.scss";
 import Switch from "@mui/material/Switch";
 import { playlistDuration } from "../helpers/playlistCalculations";
 import Option from "./Option";
+import { motion } from "framer-motion";
 
 export default function Summary({
   options,
@@ -146,7 +147,13 @@ export default function Summary({
           />
         </div>
         <div className={styles.playlistSave}>
-          <button onClick={createPlaylist}>Save to Spotify</button>
+          <motion.button
+            onClick={createPlaylist}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Save to Spotify
+          </motion.button>
         </div>
       </div>
     </div>

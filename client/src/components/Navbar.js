@@ -1,7 +1,5 @@
-import React from "react";
 import AuthButton from "./AuthButton";
 import spotifyIcon from "../spotify-icon.svg";
-
 import styles from "../styles/components/Navbar.module.scss";
 
 export default function Navbar({ code, user }) {
@@ -13,7 +11,7 @@ export default function Navbar({ code, user }) {
     <nav className={styles.navbar}>
       <h1 className={styles.logo}>Tempo Playlist</h1>
       <div className={styles.navItems}>
-        {user ? (
+        {user && (
           <>
             <div className={styles.user}>
               {userImage}
@@ -27,9 +25,8 @@ export default function Navbar({ code, user }) {
               <img className={styles.spotify} src={spotifyIcon} alt="" />
             </a>
           </>
-        ) : null}
-
-        <AuthButton code={code} />
+        )}
+        {code !== null && <AuthButton code={code} />}
       </div>
     </nav>
   );

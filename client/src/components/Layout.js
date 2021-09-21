@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import Summary from "./Summary";
 import Search from "./Search";
+import Modal from "./Modal";
 import styles from "../styles/components/Layout.module.scss";
 import Playlist from "./Playlist";
+import { motion, AnimatePresence } from "framer-motion";
+import PageLoader from "./PageLoader";
 
 export default function Layout({ code, spotifyApi, user }) {
   const [seedList, setSeedList] = useState([]);
@@ -14,9 +17,19 @@ export default function Layout({ code, spotifyApi, user }) {
   const [playlistName, setPlaylistName] = useState("110bpm playlist");
   const [publicPlaylist, setPublicPlaylist] = useState(true);
   const [collaborativePlaylist, setcollaborativePlaylist] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
+
+  const closeModal = () => setModalOpen(false);
+
+  // Show login modal on page load
+  useEffect(() => {
+    setModalOpen(true);
+  }, [setModalOpen]);
 
   const options = [tempo, setTempo, energy, setEnergy, duration, setDuration];
 
+  // Set the playlist name
   useEffect(() => {
     let msg = "";
     if (seedList.length > 0) {
@@ -25,6 +38,7 @@ export default function Layout({ code, spotifyApi, user }) {
     setPlaylistName(`${tempo}bpm playlist${msg}`);
   }, [tempo, seedList]);
 
+  // Save the playlist
   useEffect(() => {
     const target_tempo = tempo;
     const min_tempo = target_tempo - 1;
@@ -72,46 +86,71 @@ export default function Layout({ code, spotifyApi, user }) {
     }
   }, [seedList, spotifyApi, energy, tempo]);
 
+  let initialLoad = false;
+  if (pageLoading & (code != null)) {
+    initialLoad = true;
+  }
+
   return (
     <>
-      <header>
-        <Navbar code={code} user={user} />
-      </header>
-
-      <main className={styles.main}>
-        <section className={styles.search}>
-          <Search
-            seedList={seedList}
-            setSeedList={setSeedList}
-            spotifyApi={spotifyApi}
+      {initialLoad && (
+        <AnimatePresence
+          initial={true}
+          exitBeforeEnter={true}
+          onExitComplete={() => null}
+        >
+          <PageLoader
+            pageLoading={pageLoading}
+            setPageLoading={setPageLoading}
           />
-        </section>
-        {/* <section className={styles.player}>
-          <Player options={options} />
-        </section> */}
-        <section className={styles.playlist}>
-          <Playlist
-            spotifyApi={spotifyApi}
-            playlist={playlist}
-            setPlaylist={setPlaylist}
-          />
-        </section>
-        <section className={styles.summary}>
-          <Summary
-            user={user}
-            playlist={playlist}
-            playlistName={playlistName}
-            options={options}
-            seedList={seedList}
-            setSeedList={setSeedList}
-            spotifyApi={spotifyApi}
-            publicPlaylist={publicPlaylist}
-            setPublicPlaylist={setPublicPlaylist}
-            collaborativePlaylist={collaborativePlaylist}
-            setcollaborativePlaylist={setcollaborativePlaylist}
-          />
-        </section>
-      </main>
+        </AnimatePresence>
+      )}
+      {code !== null ? (
+        <>
+          <header>
+            <Navbar code={code} user={user} />
+          </header>
+          <main className={styles.main}>
+            <section className={styles.search}>
+              <Search
+                seedList={seedList}
+                setSeedList={setSeedList}
+                spotifyApi={spotifyApi}
+              />
+            </section>
+            <section className={styles.playlist}>
+              <Playlist
+                spotifyApi={spotifyApi}
+                playlist={playlist}
+                setPlaylist={setPlaylist}
+              />
+            </section>
+            <section className={styles.summary}>
+              <Summary
+                user={user}
+                playlist={playlist}
+                playlistName={playlistName}
+                options={options}
+                seedList={seedList}
+                setSeedList={setSeedList}
+                spotifyApi={spotifyApi}
+                publicPlaylist={publicPlaylist}
+                setPublicPlaylist={setPublicPlaylist}
+                collaborativePlaylist={collaborativePlaylist}
+                setcollaborativePlaylist={setcollaborativePlaylist}
+              />
+            </section>
+          </main>
+        </>
+      ) : (
+        <AnimatePresence
+          initial={false}
+          exitBeforeEnter={true}
+          onExitComplete={() => null}
+        >
+          {modalOpen && <Modal code={code} handleClose={closeModal} />}
+        </AnimatePresence>
+      )}
     </>
   );
 }
