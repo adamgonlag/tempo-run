@@ -2,8 +2,14 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(26, 26, 26);
   font-family: "Poppins", sans-serif;
+  background: linear-gradient(
+    164deg,
+    rgba(26, 26, 26, 1) 0%,
+    rgba(26, 26, 26, 1) 0%,
+    rgba(26, 26, 26, 1) 48%,
+    rgba(73, 35, 88, 1) 100%
+  );
 }
 
 /* Box sizing rules */

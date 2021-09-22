@@ -49,6 +49,7 @@ export default function Search({
             seedList.map((artist) => {
               return (
                 <Seed
+                  key={artist.id}
                   artist={artist}
                   seedList={seedList}
                   setSeedList={setSeedList}

@@ -2,8 +2,21 @@
 
 //Colors
 $pink-flamingo: rgb(255, 60, 255);
-$background-black: rgb(26, 26, 26);
+$main-background: linear-gradient(
+  149deg,
+  rgba(26, 26, 26, 1) 0%,
+  rgba(26, 26, 26, 1) 0%,
+  rgba(26, 26, 26, 1) 25%,
+  rgba(121, 100, 129, 1) 100%
+);
+$spotify-green: #19b26b;
 $card-dark-grey: rgb(37, 37, 37);
 $purple: rgb(119, 46, 119);
 $grey-text: rgb(179, 179, 179);
 $purple-highlight: rgb(121, 100, 129);
+$login-background: linear-gradient(
+  166deg,
+  rgba(121, 100, 129, 1) 0%,
+  rgba(127, 97, 184, 1) 50%,
+  rgba(255, 60, 255, 1) 100%
+);

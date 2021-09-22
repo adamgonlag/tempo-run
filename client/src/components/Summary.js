@@ -1,8 +1,10 @@
+import { useState } from "react";
 import styles from "../styles/components/Summary.module.scss";
 import Switch from "@mui/material/Switch";
 import { playlistDuration } from "../helpers/playlistCalculations";
 import Option from "./Option";
 import { motion } from "framer-motion";
+import SaveButton from "./SaveButton";
 
 export default function Summary({
   options,
@@ -16,6 +18,9 @@ export default function Summary({
   collaborativePlaylist,
   setcollaborativePlaylist,
 }) {
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [createdPlaylist, setCreatedPlaylist] = useState(null);
   const [tempo, setTempo, energy, setEnergy, duration, setDuration] = options;
 
   const label = { inputProps: { "aria-label": "Switch" } };
@@ -48,6 +53,7 @@ export default function Summary({
   const durationString = convertDurationToString();
 
   const createPlaylist = () => {
+    setLoading(true);
     const trackUris = playlist.map((track) => track.uri);
     spotifyApi
       .createPlaylist(user.id, {
@@ -57,19 +63,19 @@ export default function Summary({
         collaborative: collaborativePlaylist,
       })
       .then((res) => {
+        setCreatedPlaylist(res);
         const playlistId = res.id;
         spotifyApi.addTracksToPlaylist(playlistId, trackUris).then((res) => {
-          console.log(res);
+          setTimeout(() => {
+            setLoading(false);
+            setSuccess(true);
+          }, 1000);
         });
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
-  //   const handleChange = (e) => {
-  //     setPlaylistName(e.target.value);
-  //   };
 
   const handlePubChange = (e) => {
     setPublicPlaylist(e.target.checked);
@@ -146,15 +152,14 @@ export default function Summary({
             color="secondary"
           />
         </div>
-        <div className={styles.playlistSave}>
-          <motion.button
-            onClick={createPlaylist}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Save to Spotify
-          </motion.button>
-        </div>
+        <SaveButton
+          createdPlaylist={createdPlaylist}
+          loading={loading}
+          setLoading={setLoading}
+          success={success}
+          setSuccess={setSuccess}
+          onClick={createPlaylist}
+        ></SaveButton>
       </div>
     </div>
   );
