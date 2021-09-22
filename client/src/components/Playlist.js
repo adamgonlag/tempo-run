@@ -1,10 +1,23 @@
 import React, { useState } from "react";
 import PlaylistItem from "./PlaylistItem";
 import styles from "../styles/components/Playlist.module.scss";
+import { motion } from "framer-motion";
 
 export default function Playlist({ playlist, setPlaylist, spotifyApi }) {
+  const playlistAnimation = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1, transition: { duration: 0.15 } },
+    exit: {},
+  };
   return (
-    <div className={styles.playlist}>
+    <motion.div
+      className={styles.playlist}
+      key="playlist"
+      variants={playlistAnimation}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       <table className={styles.table}>
         <thead>
           <tr>
@@ -36,6 +49,6 @@ export default function Playlist({ playlist, setPlaylist, spotifyApi }) {
           })}
         </tbody>
       </table>
-    </div>
+    </motion.div>
   );
 }

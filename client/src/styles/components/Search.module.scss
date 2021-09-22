@@ -76,16 +76,16 @@
   bottom: -2px;
   left: 0%;
   width: 100%;
-  height: 10px;
+  height: 7px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   background: linear-gradient(
     90deg,
-    rgba(255, 60, 255, 1) 0%,
-    rgba(255, 60, 255, 1) 40%,
-    rgba(0, 255, 98, 1) 50%,
-    rgba(82, 46, 148, 1) 60%,
-    rgba(82, 46, 148, 1) 100%
+    $pink-flamingo 0%,
+    $pink-flamingo 40%,
+    $spotify-green 50%,
+    $blue-tint 60%,
+    $blue-tint 100%
   );
   background-size: 400% 400%;
   animation: gradient 2s ease-in-out infinite;

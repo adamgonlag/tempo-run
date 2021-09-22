@@ -5,21 +5,24 @@ import Search from "./Search";
 import Modal from "./Modal";
 import styles from "../styles/components/Layout.module.scss";
 import Playlist from "./Playlist";
+import PlaylistLoader from "./PlaylistLoader";
 import { motion, AnimatePresence } from "framer-motion";
 import PageLoader from "./PageLoader";
 
 export default function Layout({ code, spotifyApi, user }) {
   const [seedList, setSeedList] = useState([]);
   const [playlist, setPlaylist] = useState([]);
-  const [tempo, setTempo] = useState(110);
+  const [tempo, setTempo] = useState(116);
   const [duration, setDuration] = useState(17);
   const [energy, setEnergy] = useState(80);
-  const [playlistName, setPlaylistName] = useState("110bpm playlist");
+  const [playlistName, setPlaylistName] = useState("116bpm playlist");
   const [publicPlaylist, setPublicPlaylist] = useState(true);
   const [collaborativePlaylist, setcollaborativePlaylist] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [pageLoading, setPageLoading] = useState(true);
   const [loadingPlaylist, setLoadingPlaylist] = useState(false);
+  const [loadingSave, setLoadingSave] = useState(false);
+  const [saveSuccess, setSaveSuccess] = useState(false);
 
   const closeModal = () => setModalOpen(false);
 
@@ -27,6 +30,11 @@ export default function Layout({ code, spotifyApi, user }) {
   useEffect(() => {
     setModalOpen(true);
   }, [setModalOpen]);
+
+  // Reset save success button when playlistst changes
+  useEffect(() => {
+    setSaveSuccess(false);
+  }, [playlist]);
 
   const options = [tempo, setTempo, energy, setEnergy, duration, setDuration];
 
@@ -130,6 +138,7 @@ export default function Layout({ code, spotifyApi, user }) {
                 playlist={playlist}
               />
             </section>
+            {/* {loadingPlaylist && <PlaylistLoader />} */}
             {playlist.length > 0 ? (
               <>
                 <section className={styles.playlist}>
@@ -152,6 +161,10 @@ export default function Layout({ code, spotifyApi, user }) {
                     setPublicPlaylist={setPublicPlaylist}
                     collaborativePlaylist={collaborativePlaylist}
                     setcollaborativePlaylist={setcollaborativePlaylist}
+                    saveSuccess={saveSuccess}
+                    setSaveSuccess={setSaveSuccess}
+                    loadingSave={loadingSave}
+                    setLoadingSave={setLoadingSave}
                   />
                 </section>
               </>

@@ -17,9 +17,11 @@ export default function Summary({
   setPublicPlaylist,
   collaborativePlaylist,
   setcollaborativePlaylist,
+  saveSuccess,
+  setSaveSuccess,
+  loadingSave,
+  setLoadingSave,
 }) {
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
   const [createdPlaylist, setCreatedPlaylist] = useState(null);
   const [tempo, setTempo, energy, setEnergy, duration, setDuration] = options;
 
@@ -53,7 +55,7 @@ export default function Summary({
   const durationString = convertDurationToString();
 
   const createPlaylist = () => {
-    setLoading(true);
+    setLoadingSave(true);
     const trackUris = playlist.map((track) => track.uri);
     spotifyApi
       .createPlaylist(user.id, {
@@ -67,8 +69,8 @@ export default function Summary({
         const playlistId = res.id;
         spotifyApi.addTracksToPlaylist(playlistId, trackUris).then((res) => {
           setTimeout(() => {
-            setLoading(false);
-            setSuccess(true);
+            setLoadingSave(false);
+            setSaveSuccess(true);
           }, 1000);
         });
       })
@@ -90,8 +92,22 @@ export default function Summary({
       setPublicPlaylist(false);
     }
   };
+
+  const summaryAnimation = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1, transition: { duration: 0.15 } },
+    exit: { opacity: 0 },
+  };
   return (
-    <div className={styles.summary}>
+    <motion.div
+      className={styles.summary}
+      key="summary"
+      variants={summaryAnimation}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      s
+    >
       <div className={styles.options}>
         <ul>
           <li>
@@ -101,12 +117,12 @@ export default function Summary({
               value={tempo}
               onChange={changeTempo}
             />
-            <Option
+            {/* <Option
               title="Duration"
               valueDisplayed={durationString}
               value={duration}
               onChange={changeDuration}
-            />
+            /> */}
             <Option
               title="Energy"
               valueDisplayed={energy}
@@ -119,7 +135,6 @@ export default function Summary({
       <div className={styles.details}>
         <div className={styles.playlistName}>
           <label htmlFor="">Playlist Name</label>
-          {/* <textarea onChange={handleChange} type="text" value={playlistName} /> */}
           <p>{playlistName}</p>
         </div>
         <div className={styles.stats}>
@@ -154,13 +169,13 @@ export default function Summary({
         </div>
         <SaveButton
           createdPlaylist={createdPlaylist}
-          loading={loading}
-          setLoading={setLoading}
-          success={success}
-          setSuccess={setSuccess}
+          saveSuccess={saveSuccess}
+          setSaveSuccess={setSaveSuccess}
+          loadingSave={loadingSave}
+          setLoadingSave={setLoadingSave}
           onClick={createPlaylist}
         ></SaveButton>
       </div>
-    </div>
+    </motion.div>
   );
 }

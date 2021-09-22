@@ -1,16 +1,46 @@
 import AuthButton from "./AuthButton";
 import spotifyIcon from "../spotify-icon.svg";
 import styles from "../styles/components/Navbar.module.scss";
+import { motion } from "framer-motion";
 
 export default function Navbar({ code, user }) {
   let userImage;
   if (user && user.images) {
     userImage = <img src={user.images[0].url} alt="user profile pic" />;
   }
+
+  const navItemAnimation = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1, transition: { duration: 1, delay: 0.8 } },
+    exit: {},
+  };
+
+  const logoAnimation = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1, transition: { duration: 1, delay: 0.8 } },
+    exit: {},
+  };
+
   return (
     <nav className={styles.navbar}>
-      <h1 className={styles.logo}>Tempo Playlist</h1>
-      <div className={styles.navItems}>
+      <motion.h1
+        className={styles.logo}
+        key="logo"
+        variants={logoAnimation}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
+        Tempo Playlist
+      </motion.h1>
+      <motion.div
+        className={styles.navItems}
+        key="nav-items"
+        variants={navItemAnimation}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
         {user && (
           <>
             <div className={styles.user}>
@@ -27,7 +57,7 @@ export default function Navbar({ code, user }) {
           </>
         )}
         {code !== null && <AuthButton code={code} />}
-      </div>
+      </motion.div>
     </nav>
   );
 }

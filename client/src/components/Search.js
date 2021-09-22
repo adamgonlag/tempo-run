@@ -23,7 +23,7 @@ export default function Search({
     animate: {
       opacity: 1,
       width: "100%",
-      transition: { duration: 0.5, type: "spring" },
+      transition: { duration: 0.5, type: "linear" },
     },
     exit: { opacity: 1, width: "100%", y: "200px", x: "200px" },
   };
@@ -42,7 +42,11 @@ export default function Search({
         animate="animate"
         exit="exit"
       >
-        <SearchBar setSeedList={setSeedList} spotifyApi={spotifyApi} />
+        <SearchBar
+          setSeedList={setSeedList}
+          seedList={seedList}
+          spotifyApi={spotifyApi}
+        />
 
         <div className={styles.seeds}>
           {seedList.length > 0 &&

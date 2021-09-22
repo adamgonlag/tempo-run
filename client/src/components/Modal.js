@@ -39,6 +39,9 @@ export default function Modal({ handleClose, text, code }) {
         animate="visible"
         exit="exit"
       >
+        <motion.div key="modal-logo" variant={item}>
+          <h2>Tempo Playlister</h2>
+        </motion.div>
         <motion.div key="modal-header" variant={item}>
           <h1>Move at your own pace.</h1>
         </motion.div>

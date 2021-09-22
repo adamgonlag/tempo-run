@@ -4,10 +4,10 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 export default function SaveButton({
   onClick,
-  loading,
-  setLoading,
-  success,
-  setSuccess,
+  saveSuccess,
+  setSaveSuccess,
+  loadingSave,
+  setLoadingSave,
   createdPlaylist,
 }) {
   const saveButton = (
@@ -16,7 +16,7 @@ export default function SaveButton({
       onClick={onClick}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      disabled={loading}
+      disabled={loadingSave}
     >
       Save to Spotify
     </motion.button>
@@ -24,7 +24,6 @@ export default function SaveButton({
 
   let successButton;
   if (createdPlaylist != null) {
-    console.log(createdPlaylist);
     successButton = (
       <a
         href={createdPlaylist.external_urls.spotify}
@@ -49,8 +48,8 @@ export default function SaveButton({
 
   return (
     <div className={styles.playlistSave}>
-      {success ? successButton : saveButton}
-      {loading && (
+      {saveSuccess ? successButton : saveButton}
+      {loadingSave && (
         <CircularProgress
           size={24}
           sx={{

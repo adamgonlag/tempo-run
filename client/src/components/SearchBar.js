@@ -3,7 +3,7 @@ import styles from "../styles/components/Search.module.scss";
 
 import Autosuggest from "react-autosuggest";
 
-export default function SearchBar({ spotifyApi, setSeedList }) {
+export default function SearchBar({ spotifyApi, setSeedList, seedList }) {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
@@ -35,7 +35,15 @@ export default function SearchBar({ spotifyApi, setSeedList }) {
       event.preventDefault();
     }
     setQuery("");
-    setSeedList((state) => [...state, suggestion]);
+    // Check if seed already in list
+    if (seedList.length > 0) {
+      const duplicates = seedList.filter((seed) => suggestion.id === seed.id);
+      if (duplicates.length === 0) {
+        setSeedList((state) => [...state, suggestion]);
+      }
+    } else {
+      setSeedList((state) => [...state, suggestion]);
+    }
   };
 
   // Autosuggest will call this function every time you need to clear suggestions.
