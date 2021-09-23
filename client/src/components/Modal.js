@@ -46,8 +46,7 @@ export default function Modal({ handleClose, text, code }) {
           <h1>Move at your own pace.</h1>
         </motion.div>
         <motion.p key="modal-text">
-          Set a tempo and choose your favorite artists to enjoy the perfect pace
-          making playlist.
+          Create the perfect pace making playlist to keep you on track.
         </motion.p>
         <AuthButton code={code} />
       </motion.div>

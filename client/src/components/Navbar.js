@@ -31,7 +31,7 @@ export default function Navbar({ code, user }) {
         animate="animate"
         exit="exit"
       >
-        Tempo Playlist
+        Tempo Playlister
       </motion.h1>
       <motion.div
         className={styles.navItems}

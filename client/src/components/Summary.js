@@ -40,14 +40,9 @@ export default function Summary({
   };
 
   const convertDurationToString = () => {
-    const maxDuration = 10800; //3 hours in secs
-    const minDuration = 0;
-    const delta = maxDuration - minDuration;
-    const totalSecs = (duration / 100) * delta;
-
     // Convert to h:mm:ss
     var date = new Date(null);
-    date.setSeconds(totalSecs);
+    date.setSeconds(duration);
 
     return date.toISOString().substr(11, 5);
   };
@@ -112,19 +107,19 @@ export default function Summary({
         <ul>
           <li>
             <Option
-              title="Tempo"
+              title="Your Tempo"
               valueDisplayed={tempo}
               value={tempo}
               onChange={changeTempo}
             />
-            {/* <Option
-              title="Duration"
+            <Option
+              title="Target Duration"
               valueDisplayed={durationString}
               value={duration}
               onChange={changeDuration}
-            /> */}
+            />
             <Option
-              title="Energy"
+              title="Energy Profile"
               valueDisplayed={energy}
               value={energy}
               onChange={changeEnergy}

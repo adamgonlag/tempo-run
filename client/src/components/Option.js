@@ -6,13 +6,15 @@ import styles from "../styles/components/Option.module.scss";
 export default function Option({ title, valueDisplayed, value, onChange }) {
   let max = 100,
     min = 0;
-  if (title === "Tempo") {
+  if (title === "Your Tempo") {
     valueDisplayed += "bpm";
     max = 200;
     min = 80;
-  } else if (title === "Duration") {
+  } else if (title === "Target Duration") {
     valueDisplayed += "hh:mm";
-  } else if (title === "Energy") {
+    max = 10800;
+    min = 0;
+  } else if (title === "Energy Profile") {
     max = 100;
     min = 0;
     valueDisplayed = valueDisplayed + "%";
