@@ -39,14 +39,11 @@ export default function Modal({ handleClose, text, code }) {
         animate="visible"
         exit="exit"
       >
-        <motion.div key="modal-logo" variant={item}>
-          <h2>Tempo Playlister</h2>
-        </motion.div>
         <motion.div key="modal-header" variant={item}>
           <h1>Move at your own pace.</h1>
         </motion.div>
         <motion.p key="modal-text">
-          Create the perfect pace making playlist to keep you on track.
+          Create the perfect pace making playlist to keep you in the zone.
         </motion.p>
         <AuthButton code={code} />
       </motion.div>

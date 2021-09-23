@@ -6,13 +6,13 @@
   height: calc(100vh - 130px);
   width: 100%;
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 4fr 2fr;
   grid-template-rows: auto 1fr 1fr;
   gap: 20px;
-  padding: 10px 100px 30px 100px;
+  padding: 10px 180px 30px 180px;
   color: white;
   grid-template-areas:
-    "search summary "
+    "search search "
     "playlist summary "
     "playlist summary ";
 }

@@ -3,7 +3,7 @@
 @import "../base/typography";
 
 .modal {
-  width: clamp(70%, 600px, 90%);
+  width: clamp(50%, 500px, 90%);
   height: min(50%, 400px);
   margin: auto;
   color: white;
@@ -12,8 +12,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   text-align: center;
+  gap: 15px;
 
   background-color: $card-dark-grey;
 
@@ -30,7 +31,7 @@
 
   p {
     color: $grey-text;
-    font-size: 1.2em;
+    font-size: 1.4em;
     margin-bottom: 20px;
   }
 }
