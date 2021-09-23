@@ -24,6 +24,7 @@
       object-fit: cover;
       height: 100%;
       width: 54px;
+      padding: 5px;
       border-radius: 50px;
       transition: all 0.2s ease-in-out;
 
@@ -38,7 +39,6 @@
     border: 3px solid $spotify-green;
     height: 100%;
     border-radius: 50px;
-    padding: 5px;
     color: white;
   }
 
@@ -46,5 +46,6 @@
     background-color: transparent;
     color: $pink-flamingo;
     border: 2px solid $pink-flamingo;
+    padding-right: 0;
   }
 }
