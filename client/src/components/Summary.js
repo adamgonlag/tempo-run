@@ -112,12 +112,12 @@ export default function Summary({
               value={tempo}
               onChange={changeTempo}
             />
-            <Option
+            {/* <Option
               title="Target Duration"
               valueDisplayed={durationString}
               value={duration}
               onChange={changeDuration}
-            />
+            /> */}
             <Option
               title="Energy Profile"
               valueDisplayed={energy}

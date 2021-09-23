@@ -12,9 +12,9 @@ import PageLoader from "./PageLoader";
 export default function Layout({ code, spotifyApi, user }) {
   const [seedList, setSeedList] = useState([]);
   const [playlist, setPlaylist] = useState([]);
-  const [tempo, setTempo] = useState(116);
-  const [duration, setDuration] = useState(17);
-  const [energy, setEnergy] = useState(80);
+  const [tempo, setTempo] = useState(116); //80 to 200
+  const [duration, setDuration] = useState(1800); //in seconds
+  const [energy, setEnergy] = useState([50, 90]); //0 to 100
   const [playlistName, setPlaylistName] = useState("116bpm playlist");
   const [publicPlaylist, setPublicPlaylist] = useState(true);
   const [collaborativePlaylist, setcollaborativePlaylist] = useState(false);
@@ -52,9 +52,12 @@ export default function Layout({ code, spotifyApi, user }) {
     const target_tempo = tempo;
     const min_tempo = target_tempo - 1;
     const max_tempo = target_tempo + 1;
-    const target_energy = energy / 100;
-    const min_energy = target_energy - 0.2;
-    const max_energy = target_energy + 0.2;
+    const min_energy = energy[0] / 100;
+    const max_energy = energy[1] / 100;
+    const target_energy = (min_energy + max_energy) / 2;
+    console.log(energy[0]);
+    console.log(energy[1]);
+    console.log(target_energy);
 
     const recommendationOptions = {
       seed_artists: seedList.map((seed) => seed.id),
@@ -62,7 +65,6 @@ export default function Layout({ code, spotifyApi, user }) {
       target_energy,
       min_energy,
       max_energy,
-      target_tempo,
       min_tempo,
       max_tempo,
     };
@@ -74,6 +76,7 @@ export default function Layout({ code, spotifyApi, user }) {
       spotifyApi
         .getRecommendations(recommendationOptions)
         .then((data) => {
+          console.log(data);
           let newPlaylist = data.tracks;
 
           // Attach audio features to each track

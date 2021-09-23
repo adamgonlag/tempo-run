@@ -17,7 +17,7 @@ export default function Option({ title, valueDisplayed, value, onChange }) {
   } else if (title === "Energy Profile") {
     max = 100;
     min = 0;
-    valueDisplayed = valueDisplayed + "%";
+    valueDisplayed = `${valueDisplayed[0]}% - ${valueDisplayed[1]}%`;
   }
 
   return (
@@ -28,7 +28,7 @@ export default function Option({ title, valueDisplayed, value, onChange }) {
       </div>
       <Box>
         <Slider
-          aria-label={title}
+          getAriaLabel={() => "Energy Profile"}
           value={value}
           onChange={onChange}
           color="secondary"
