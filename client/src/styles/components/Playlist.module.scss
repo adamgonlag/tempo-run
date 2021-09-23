@@ -6,7 +6,7 @@
   width: 100%;
   height: 100%;
   justify-content: flex-start;
-  align-items: center;
+  align-items: left;
   color: white;
   padding: 0 15px 10px 15px;
   background-color: $card-dark-grey;
@@ -73,11 +73,16 @@
     }
 
     th {
-      padding: 20px 0 15px 0;
-      width: 40px;
+      padding: 20px 10px 15px 0px;
+      width: 50px;
       position: sticky;
-      top: 0; /* Don't forget this, required for the stickiness */
+      top: 0;
       background-color: transparent;
+      cursor: pointer;
+
+      span:nth-of-type(2) {
+        color: $grey-text;
+      }
     }
 
     thead tr {
@@ -86,15 +91,18 @@
       border-bottom: 1px solid $purple;
     }
 
-    .id,
+    .id {
+      text-align: center;
+      padding-right: 0;
+    }
     .tempo,
     .length,
     .energy {
-      text-align: center;
+      text-align: left;
     }
 
     .track {
-      width: 300px;
+      width: 400px;
     }
 
     .album {

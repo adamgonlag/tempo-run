@@ -17,7 +17,7 @@
 
   .artist {
     display: flex;
-    align-items: center;
+    align-items: left;
     height: 80px;
     padding-right: 10px;
 
@@ -32,13 +32,15 @@
     }
   }
 
-  .id,
+  .id {
+    text-align: center;
+  }
   .tempo,
   .length,
   .energy,
   .remove {
     padding: 0;
-    text-align: center;
+    text-align: left;
   }
 
   .remove span {

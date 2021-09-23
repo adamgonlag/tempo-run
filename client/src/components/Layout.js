@@ -9,6 +9,22 @@ import PlaylistLoader from "./PlaylistLoader";
 import { motion, AnimatePresence } from "framer-motion";
 import PageLoader from "./PageLoader";
 
+const sortPlaylist = (playlist, columnSorted, ascending) => {
+  const sortedPlaylist = playlist.sort((a, b) => {
+    const trackA = a.audio_features[columnSorted];
+    const trackB = b.audio_features[columnSorted];
+    if (ascending) {
+      return trackA > trackB ? -1 : 1;
+    } else {
+      return trackA > trackB ? 1 : -1;
+    }
+  });
+
+  console.log(sortedPlaylist);
+
+  return sortedPlaylist;
+};
+
 export default function Layout({ code, spotifyApi, user }) {
   const [seedList, setSeedList] = useState([]);
   const [playlist, setPlaylist] = useState([]);
@@ -23,6 +39,9 @@ export default function Layout({ code, spotifyApi, user }) {
   const [loadingPlaylist, setLoadingPlaylist] = useState(false);
   const [loadingSave, setLoadingSave] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
+  const [isSorted, setIsSorted] = useState(false);
+  const [columnSorted, setColumnSorted] = useState(null);
+  const [ascending, setAscending] = useState(true);
 
   const closeModal = () => setModalOpen(false);
 
@@ -30,6 +49,14 @@ export default function Layout({ code, spotifyApi, user }) {
   useEffect(() => {
     setModalOpen(true);
   }, [setModalOpen]);
+
+  // Playlist sorting
+  useEffect(() => {
+    if (isSorted) {
+      const sortedPlaylist = sortPlaylist(playlist, columnSorted, ascending);
+      setPlaylist(sortedPlaylist);
+    }
+  }, [isSorted, columnSorted, ascending, playlist]);
 
   // Reset save success button when playlistst changes
   useEffect(() => {
@@ -149,6 +176,12 @@ export default function Layout({ code, spotifyApi, user }) {
                     spotifyApi={spotifyApi}
                     playlist={playlist}
                     setPlaylist={setPlaylist}
+                    isSorted={isSorted}
+                    ascending={ascending}
+                    columnSorted={columnSorted}
+                    setIsSorted={setIsSorted}
+                    setColumnSorted={setColumnSorted}
+                    setAscending={setAscending}
                   />
                 </section>
                 <section className={styles.summary}>
