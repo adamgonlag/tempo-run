@@ -56,7 +56,7 @@ export default function Summary({
     spotifyApi
       .createPlaylist(user.id, {
         name: playlistName,
-        description: "Created by Tempo Playlist",
+        description: "Created by Tempo Run",
         public: publicPlaylist,
         collaborative: collaborativePlaylist,
       })
