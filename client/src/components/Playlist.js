@@ -3,6 +3,22 @@ import PlaylistItem from "./PlaylistItem";
 import styles from "../styles/components/Playlist.module.scss";
 import { motion } from "framer-motion";
 
+const sortPlaylist = (playlist, columnSorted, ascending) => {
+  const sortedPlaylist = playlist.sort((a, b) => {
+    const trackA = a.audio_features[columnSorted];
+    const trackB = b.audio_features[columnSorted];
+    if (ascending) {
+      return trackA > trackB ? -1 : 1;
+    } else {
+      return trackA > trackB ? 1 : -1;
+    }
+  });
+
+  console.log(sortedPlaylist);
+
+  return sortedPlaylist;
+};
+
 export default function Playlist({
   playlist,
   setPlaylist,
@@ -28,7 +44,8 @@ export default function Playlist({
   }
 
   const handleSort = (column) => {
-    console.log("sort: ", column);
+    const sortedPlaylist = sortPlaylist(playlist, columnSorted, ascending);
+    setPlaylist(sortedPlaylist);
     setColumnSorted(column);
     setIsSorted(true);
     setAscending(!ascending);

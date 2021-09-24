@@ -14,6 +14,7 @@ export const scope = [
   "user-read-currently-playing",
   "user-modify-playback-state",
   "user-read-playback-state",
+  "ugc-image-upload",
 ];
 
 export const AUTH_URL = `${spotify_auth_url}?client_id=${client_id}&response_type=${response_type}&redirect_uri=${redirect_uri}&scope=${scope.join(

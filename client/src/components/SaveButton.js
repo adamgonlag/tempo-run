@@ -39,7 +39,7 @@ export default function SaveButton({
         >
           <div className={styles.successButtonText}>
             <p>Success! View Playlist</p>{" "}
-            <span class="material-icons">link</span>
+            <span className="material-icons">link</span>
           </div>
         </motion.button>
       </a>

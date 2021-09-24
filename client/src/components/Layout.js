@@ -9,22 +9,6 @@ import PlaylistLoader from "./PlaylistLoader";
 import { motion, AnimatePresence } from "framer-motion";
 import PageLoader from "./PageLoader";
 
-const sortPlaylist = (playlist, columnSorted, ascending) => {
-  const sortedPlaylist = playlist.sort((a, b) => {
-    const trackA = a.audio_features[columnSorted];
-    const trackB = b.audio_features[columnSorted];
-    if (ascending) {
-      return trackA > trackB ? -1 : 1;
-    } else {
-      return trackA > trackB ? 1 : -1;
-    }
-  });
-
-  console.log(sortedPlaylist);
-
-  return sortedPlaylist;
-};
-
 export default function Layout({ code, spotifyApi, user }) {
   const [seedList, setSeedList] = useState([]);
   const [playlist, setPlaylist] = useState([]);
@@ -50,16 +34,10 @@ export default function Layout({ code, spotifyApi, user }) {
     setModalOpen(true);
   }, [setModalOpen]);
 
-  // Playlist sorting
   useEffect(() => {
-    if (isSorted) {
-      const sortedPlaylist = sortPlaylist(playlist, columnSorted, ascending);
-      setPlaylist(sortedPlaylist);
-    }
-  }, [isSorted, columnSorted, ascending, playlist]);
-
-  // Reset save success button when playlistst changes
-  useEffect(() => {
+    // Reset sorting
+    setIsSorted(false);
+    // Reset save success button when playlistst changes
     setSaveSuccess(false);
   }, [playlist]);
 
@@ -82,9 +60,6 @@ export default function Layout({ code, spotifyApi, user }) {
     const min_energy = energy[0] / 100;
     const max_energy = energy[1] / 100;
     const target_energy = (min_energy + max_energy) / 2;
-    console.log(energy[0]);
-    console.log(energy[1]);
-    console.log(target_energy);
 
     const recommendationOptions = {
       seed_artists: seedList.map((seed) => seed.id),
@@ -94,6 +69,7 @@ export default function Layout({ code, spotifyApi, user }) {
       max_energy,
       min_tempo,
       max_tempo,
+      target_tempo,
     };
 
     if (seedList.length === 0) {
@@ -109,16 +85,12 @@ export default function Layout({ code, spotifyApi, user }) {
           // Attach audio features to each track
           const trackIds = newPlaylist.map((track) => track.id);
           spotifyApi.getAudioFeaturesForTracks(trackIds).then((data) => {
-            newPlaylist = newPlaylist
-              .map((track) => {
-                const trackAudioFeatures = data.audio_features.filter(
-                  (item) => item.uri === track.uri
-                );
-                return { ...track, audio_features: trackAudioFeatures[0] };
-              })
-              .filter(
-                (track) => Math.floor(track.audio_features.tempo) === tempo
+            newPlaylist = newPlaylist.map((track) => {
+              const trackAudioFeatures = data.audio_features.filter(
+                (item) => item.uri === track.uri
               );
+              return { ...track, audio_features: trackAudioFeatures[0] };
+            });
 
             //Allow loader to show longer before showing playlistt
             setTimeout(() => {

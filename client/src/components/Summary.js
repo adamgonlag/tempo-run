@@ -50,6 +50,7 @@ export default function Summary({
   const durationString = convertDurationToString();
 
   const createPlaylist = () => {
+    console.log("create playlist");
     setLoadingSave(true);
     const trackUris = playlist.map((track) => track.uri);
     spotifyApi
