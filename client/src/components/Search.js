@@ -23,7 +23,7 @@ export default function Search({
     animate: {
       opacity: 1,
       width: "100%",
-      transition: { duration: 0.5, type: "linear" },
+      transition: { duration: 1, type: "linear", delay: 0.5 },
     },
     exit: { opacity: 1, width: "100%", y: "200px", x: "200px" },
   };

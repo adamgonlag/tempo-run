@@ -40,10 +40,10 @@ export default function Modal({ handleClose, text, code }) {
         exit="exit"
       >
         <motion.div key="modal-header" variant={item}>
-          <h1>Move at your own pace.</h1>
+          <h1>Move at your own pace</h1>
         </motion.div>
         <motion.p key="modal-text">
-          Create the perfect pace making playlist to keep you in the zone.
+          Create the perfect pace making playlist to keep you in the zone
         </motion.p>
         <AuthButton code={code} />
       </motion.div>

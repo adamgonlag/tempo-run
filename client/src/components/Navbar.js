@@ -9,15 +9,22 @@ export default function Navbar({ code, user }) {
     userImage = <img src={user.images[0].url} alt="user profile pic" />;
   }
 
-  const navItemAnimation = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { duration: 1, delay: 0.8 } },
+  const logoAnimation = {
+    initial: { y: "-100vh", opacity: 0 },
+    animate: {
+      y: "0",
+      opacity: 1,
+      transition: { duration: 1.5, type: "spring" },
+    },
     exit: {},
   };
-
-  const logoAnimation = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { duration: 1, delay: 0.8 } },
+  const navItemAnimation = {
+    initial: { y: "-100vh", opacity: 0 },
+    animate: {
+      y: "0",
+      opacity: 1,
+      transition: { duration: 1.5, type: "spring" },
+    },
     exit: {},
   };
 
