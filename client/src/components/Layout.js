@@ -41,7 +41,7 @@ export default function Layout({ code, spotifyApi, user }) {
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
   const [columnSorted, setColumnSorted] = useState(null);
-  const [ascending, setAscending] = useState(true);
+  const [ascending, setAscending] = useState(false);
 
   const closeModal = () => setModalOpen(false);
 

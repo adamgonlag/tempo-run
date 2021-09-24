@@ -1,7 +1,11 @@
 export const spotify_auth_url = "https://accounts.spotify.com/authorize";
 export const client_id = "12d2225d82dd411497e76e507ac9807f";
 export const response_type = "code";
-export const redirect_uri = "http://localhost:3000";
+export const redirect_uri =
+  process.env.REDIRECT_URI ||
+  (process.env.NODE_ENV === "production" &&
+    "https://hidden-gorge-82205.herokuapp.com/") ||
+  "http://localhost:3000";
 export const scope = [
   "user-read-private",
   "user-read-email",
