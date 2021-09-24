@@ -31,6 +31,7 @@ export default function Navbar({ code, user }) {
         animate="animate"
         exit="exit"
       >
+        <span className="material-icons">timer</span>
         Tempo Run
       </motion.h1>
       <motion.div

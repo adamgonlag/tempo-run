@@ -8,12 +8,21 @@
   justify-content: space-between;
   align-items: flex-end;
   padding: 20px 140px;
-  height: 130px;
+  height: 140px;
 
   .logo {
-    font-size: 60px;
+    color: $white;
+    font-size: 70px;
     text-decoration: underline;
-    text-shadow: 0.04em 0.04em rgb(255, 173, 248);
+    // text-shadow: 0.04em 0.04em rgb(233, 188, 253);
+    span {
+      font-size: 70px;
+      color: $pink-flamingo;
+      // margin-right: 5px;
+      transform: scale(-1, 1) rotate(20deg);
+      position: relative;
+      bottom: -15px;
+    }
   }
 
   .navItems {

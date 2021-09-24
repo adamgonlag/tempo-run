@@ -16,7 +16,7 @@
   text-align: center;
   gap: 15px;
 
-  background-color: $card-dark-grey;
+  background-color: rgba(65, 65, 65, 0.39);
 
   h1 {
     font-size: 4em;
@@ -30,7 +30,7 @@
   }
 
   p {
-    color: $grey-text;
+    color: rgb(245, 245, 245);
     font-size: 1.4em;
     margin-bottom: 20px;
   }

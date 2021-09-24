@@ -14,7 +14,7 @@ export default function Layout({ code, spotifyApi, user }) {
   const [playlist, setPlaylist] = useState([]);
   const [tempo, setTempo] = useState(116); //80 to 200
   const [duration, setDuration] = useState(1800); //in seconds
-  const [energy, setEnergy] = useState([50, 90]); //0 to 100
+  const [energy, setEnergy] = useState([0, 100]); //0 to 100
   const [playlistName, setPlaylistName] = useState("116bpm playlist");
   const [publicPlaylist, setPublicPlaylist] = useState(true);
   const [collaborativePlaylist, setcollaborativePlaylist] = useState(false);
