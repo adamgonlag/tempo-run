@@ -6,6 +6,8 @@ This app allows you to create custom Spotify playlists uniquely generated based 
 
 View a live demo [here](https://hidden-gorge-82205.herokuapp.com/).
 
+![Home page](/tempo-run-home.PNG "Home Page")
+
 ## Technologies 🔨
 
 - React
