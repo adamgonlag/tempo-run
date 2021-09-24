@@ -28,8 +28,8 @@ View a live demo [here](https://hidden-gorge-82205.herokuapp.com/).
 
 ## Planning 🔎
 
-- Wireframes
-- User Stories
+- [Wireframes](https://github.com/adamgonlag/tempo-run/blob/main/planning/wireframe.png)
+- [User Stories](https://github.com/adamgonlag/tempo-run/blob/main/planning/user-stories.md)
 
 ## Further Development 🚀
 
