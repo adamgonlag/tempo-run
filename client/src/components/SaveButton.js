@@ -33,7 +33,6 @@ export default function SaveButton({
       >
         <motion.button
           className={styles.successButton}
-          onClick={onClick}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
