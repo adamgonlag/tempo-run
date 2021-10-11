@@ -13,21 +13,23 @@
   th,
   td {
     padding: 10px 0;
+    font-size: clamp(0.5em, 1.1vw, 01em);
   }
 
   .artist {
     display: flex;
     align-items: center;
-    height: 80px;
+    height: clamp(60px, 7vw, 100px);
     padding-right: 10px;
 
     .artistImg {
       object-fit: cover;
+      height: 100%;
       margin-right: 20px;
     }
 
     h1 {
-      font-size: 18px;
+      font-size: clamp(0.6em, 1.1vw, 1.2em);
       color: white;
     }
   }

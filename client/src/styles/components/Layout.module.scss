@@ -8,8 +8,9 @@
   display: grid;
   grid-template-columns: 5fr 2fr;
   grid-template-rows: auto 1fr 1fr;
-  gap: 20px;
-  padding: 10px 120px 30px 120px;
+  grid-gap: clamp(5px, 1.2vw, 20px);
+  padding: 10px clamp(1.5rem, 8vmax, 8rem);
+  padding-bottom: 30px;
   color: white;
   grid-template-areas:
     "search search "
@@ -35,4 +36,16 @@
 .search {
   grid-area: search;
   transition: all 0.3s ease-in-out;
+}
+
+@media only screen and (max-width: 1024px) {
+  .main {
+    grid-template-areas:
+      "search search "
+      "playlist playlist "
+      "summary summary ";
+  }
+}
+
+@media only screen and (min-width: 1025) {
 }

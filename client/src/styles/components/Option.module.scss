@@ -6,8 +6,9 @@
   .heading {
     display: flex;
     justify-content: space-between;
-  }
-  h1 {
-    font-size: 26px;
+    align-items: center;
+    h1 {
+      font-size: clamp(0.5em, 1.1vw, 1em);
+    }
   }
 }

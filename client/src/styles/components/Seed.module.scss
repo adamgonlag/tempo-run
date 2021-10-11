@@ -14,8 +14,6 @@
   transition: all 0.15s ease-in-out;
 
   &:hover {
-    // transform: scale(1.01);
-    // box-shadow: 1px 1px 10px #5595d4;
     background-color: #b439b4;
   }
 
@@ -45,7 +43,7 @@
   }
 
   p {
-    font-size: 15px;
+    font-size: clamp(0.6em, 1.1vw, 0.9em);
     flex-grow: 1;
     padding-left: 15px;
   }

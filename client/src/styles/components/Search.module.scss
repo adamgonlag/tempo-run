@@ -3,8 +3,7 @@
 @import "../base/typography";
 
 .search {
-  padding: 25px;
-  padding-top: 18px;
+  padding: clamp(10px, 1.7vw, 25px);
   width: 100%;
   background-color: $card-dark-grey;
   border-radius: 5px;
@@ -25,7 +24,7 @@
       &:invalid {
         box-shadow: none;
       }
-      font-size: 22px;
+      font-size: clamp(1em, 1.2vw, 2em);
       color: white;
       resize: none;
       background-color: transparent;
